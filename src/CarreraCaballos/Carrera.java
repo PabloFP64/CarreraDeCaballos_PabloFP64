@@ -1,5 +1,7 @@
 package CarreraCaballos;
 
+import CarreraCoches.Coche;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -36,6 +38,8 @@ public class Carrera {
     private JLabel lbMarcador;
     private JLabel progresoCoche1;
 
+    int CabRandom= (int) Math.random();
+
 
     private static int NUM_CABALLOS;
 
@@ -52,6 +56,7 @@ public class Carrera {
     }
 
     private void correr() {
+        int distancia = Integer.parseInt(tfDistancia.getText());
 
         int length = dameCaballos();
 
@@ -59,7 +64,8 @@ public class Carrera {
 
         Caballo caballo = null;
         for (int i = 0; i < length; i++) {
-            caballo = new Caballo("caballo" + i);
+            caballo = new Caballo(CabRandom, distancia, lbMarcador, "caballo" + i);
+            final Coche coche1 = new Coche(5, distancia, lbMarcador, "Opel");
             caballos[i] = caballo;
         }
 
@@ -76,14 +82,14 @@ public class Carrera {
                     for (int CaballoCancel = 0; CaballoCancel < 100; CaballoCancel++) {
 
                     }
-                    for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                    for (int i = 2; i < length; i++) {
+                        caballos[i].cancel(true);
                     }
                 }
             }
         });
 
-        caballo2.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[2].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -92,13 +98,16 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[2]){
+                            caballos[i].cancel(true);
+                        }
+
                     }
 
                 }
             }
         });
-        caballo3.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[3].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -107,12 +116,14 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[3]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
-        caballo4.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[4].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -123,12 +134,14 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[4]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
-        caballo5.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[5].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -139,12 +152,14 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[5]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
-        caballo6.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[6].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -155,12 +170,14 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[6]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
-        caballo7.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[7].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -171,12 +188,14 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[7]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
-        caballo8.addPropertyChangeListener(new PropertyChangeListener() {
+        caballos[8].addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent event) {
                 if (event.getPropertyName().equals("progress")) {
@@ -187,16 +206,18 @@ public class Carrera {
                 if (event.getPropertyName().equals("ganador")) {
 
                     for (int i = 0; i < length; i++) {
-                        caballo[i].cancel(true);
+                        if(caballos[i]!=caballos[2]){
+                            caballos[i].cancel(true);
+                        }
                     }
                 }
             }
         });
 
 
-        caballo1.execute();
-        caballo2.execute();
-        caballo3.execute();
+        caballos[1].execute();
+        caballos[2].execute();
+        caballos[3].execute();
     }
 
     /**
